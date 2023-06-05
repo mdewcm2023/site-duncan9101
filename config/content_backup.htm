@@ -127,4 +127,47 @@
 </div>
 </div>
 <p>將上述程式, 在本頁面導入 Brython 環境後, 可以直接執行, 並且將結果以 Brython browser 的 html 模組列在頁面中</p>
+<h1>W13</h1>
+<p>在 stud2 主機上以 wsgi 執行動態網站, 以 nginx serve 靜態網站:</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EW6xYokgCRFHg7WXquEfFD4BNa43opTIFiCRN8y1_9QPig?e=AdwXfT">stud2 主機上的動態與靜態網站 serving.mp4</a><span> </span>(在無 IPv6 網路協定支援情況下, 利用 Putty 設定代理)</p>
+<p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/EdtQf3GoNp5PgQz_VOmTtjMBYOSl-ZkYNoP3dSl4glGJkw?e=A2HbwR">以 demo2 為示範帳號, 將 resume-scrum-1 倉儲內容送到 stud2 建立靜態網站.mp4</a></p>
+<p><a href="https://nfuedu-my.sharepoint.com/:v:/g/personal/yen_nfu_edu_tw/ESE0w-u5tHpHoNLQSZgxacwBbJpcBoNd4l_i6oHNSl4jZQ?e=kYcUL6">使用 vi 編輯 server.py 放入各自的 9 字頭埠號後, 就可以用 hupper3 -m server.py 測試.mp4</a></p>
+<p>下載<span> </span><a href="https://nfuedu-my.sharepoint.com/:u:/g/personal/yen_nfu_edu_tw/ES2vox9RoINKjZwpBDMaLTcBp2iDSJ5kcnyOe7wTcX66JQ?e=i5OKhf">putty 0.78.7z</a></p>
+<p>在 stud2 主機建立倉儲的動態系統:</p>
+<p>ssh<span> </span><a href="mailto:demo2@stud2.cycu.org">demo2@stud2.cycu.org</a> 登入後, 以 ssh-keygen 在 .ssh 目錄下建立 id_rsa,<span> </span><span>id_rsa.pub</span></p>
+<p>.ssh/config:</p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_53597">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js plain">Host github.com</code></div>
+<div class="line number2 index1 alt1"><code class="js plain">User git</code></div>
+<div class="line number3 index2 alt2"><code class="js plain">Hostname github.com</code></div>
+<div class="line number4 index3 alt1"><code class="js plain">ProxyCommand /usr/bin/ncat --proxy p4.cycu.org:3128 --proxy-type http %h %p</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>sftp<span> </span><a href="mailto:demo2@stud2.cycu.org">demo2@stud2.cycu.org</a> 登入後, cd .ssh 然後以 put<span> </span><span>config</span><span> </span>將代理主機的設定檔案送到 stud2 帳號下的 .ssh 目錄, 使用 get id_rsa.pub 將公鑰取下, 然後以 SciTE 編輯器打開後, 將公鑰內容送到 Github 帳號下的 settings 中的 SSH and GPG 設定區.</p>
+<p>完成上述設定後, 以 SSH 協定取下倉儲:</p>
+<p>ssh 登入帳號後, 在所在目錄 /home/帳號/, 以 git clone<span> </span><a href="mailto:git@github.com:wcm2023">git@github.com:wcm2023</a>/倉儲名稱.git repo</p>
+<p>cd repo</p>
+<p>利用以下指令, 將 acp 設為 user 可以執行 (Execute):</p>
+<p>chmod u+x acp</p>
+<p>以 sftp get 取下 repo 目錄下的 waitress_server.py</p>
+<p>在 Windows 編輯 waitress_server.py, 之後存為 server.py, 再送回 repo 目錄下.</p>
+<p>編輯過程在填入個人帳號所配發的 9 字頭的埠號.</p>
+<p>ssh 遠端登入到 repo 目錄下, 執行 hupper3 -m server.py 測試是否已經以<span> </span><a href="https://stud2.cycu.org/">https://stud2.cycu.org:</a>8字頭的埠號. 若可以連結, 必須馬上更改登入密碼</p>
 <p></p>
