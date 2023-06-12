@@ -298,5 +298,119 @@ brython_div &lt;= data
 </tr>
 </tbody>
 </table>
+<h1>W16</h1>
+<ol>
+<li>登入 github.com</li>
+<li>連結到<span> </span><a href="https://github.com/mdecycu/cmsimde_site">https://github.com/mdecycu/cmsimde_site</a>, 以此倉儲作為 Template 建立一個新倉儲 (只有 cmsimde 目錄, 並不將其作為子目錄, 好處是可以自行更動 cmsimde 內容, 壞處為要自行更新 cmsimde).</li>
+<li>連結到<span> </span><a href="https://github.com/mdecycu/cmsite">https://github.com/mdecycu/cmsite</a>, 以此倉儲作為 Template 建立一個新倉儲 (以 cmsimde 作為子模組, 好處為可利用 cd cmsimde, git pull origin master 完成與 cmsimde 官網內容同步, 壞處為不可任意修改 cmsimde 目錄中的資料).</li>
+<li>回到 Replit, 建立新的 Repl 時, 利用 Import from Github 建立新專案 (w16), 必須確定從 Replit 進入 Github 維護倉儲內容的權限許可. (若無授權則無法 Import from Github)</li>
+<li>開啟 Repllit 專案中的隱藏檔案檢視, 然後查看 .replit 是否以 main.py 作為 entry point, 且 main.py 內容如下:</li>
+<li>並且進入 Shell 頁面 (等同 Windows 的 cmd 命令列視窗) 利用 pip install flask flask_cors bs4 lxml pelican markdown gevent 安裝執行 cmsimde 動態網站所需要的 Python 模組, flask 與 flask_cors 為網際框架, bs4 與 lxml 為頁面分頁所需模組, pelican 與 markdown 則用於建立網誌, gevent 則用於啟動 main.py.</li>
+<li>按下 Run 執行 main.py, 就可以看到動態網站已經啟動.</li>
+<li>若更新動態網站內容後, 用 Generate_pages 轉為靜態, 必須在 Git Tools 中執行 git add . 與 git commit -m, 最後才進入 Shell 以 git push 將改版內容推向對應的 Github 倉儲.</li>
+</ol>
+<p>main.py 內容:</p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_406066">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+<div class="line number5 index4 alt2">5</div>
+<div class="line number6 index5 alt1">6</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py keyword">from</code> <code class="py plain">cmsimde </code><code class="py keyword">import</code> <code class="py plain">flaskapp</code></div>
+<div class="line number2 index1 alt1"><code class="py keyword">from</code> <code class="py plain">gevent.pywsgi </code><code class="py keyword">import</code> <code class="py plain">WSGIServer</code></div>
+<div class="line number3 index2 alt2"> </div>
+<div class="line number4 index3 alt1"><code class="py comments">#flaskapp.app.run(host="0.0.0.0", debug=True)</code></div>
+<div class="line number5 index4 alt2"><code class="py plain">http_server </code><code class="py keyword">=</code> <code class="py plain">WSGIServer((</code><code class="py string">'0.0.0.0'</code><code class="py plain">, </code><code class="py value">8080</code><code class="py plain">), flaskapp.app)</code></div>
+<div class="line number6 index5 alt1"><code class="py plain">http_server.serve_forever()</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>若要修改網站標題, 可以編輯 init.py 後重新開啟後才能生效.</p>
+<p>init.py 內容:</p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_695974">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+<div class="line number5 index4 alt2">5</div>
+<div class="line number6 index5 alt1">6</div>
+<div class="line number7 index6 alt2">7</div>
+<div class="line number8 index7 alt1">8</div>
+<div class="line number9 index8 alt2">9</div>
+<div class="line number10 index9 alt1">10</div>
+<div class="line number11 index10 alt2">11</div>
+<div class="line number12 index11 alt1">12</div>
+<div class="line number13 index12 alt2">13</div>
+<div class="line number14 index13 alt1">14</div>
+<div class="line number15 index14 alt2">15</div>
+<div class="line number16 index15 alt1">16</div>
+<div class="line number17 index16 alt2">17</div>
+<div class="line number18 index17 alt1">18</div>
+<div class="line number19 index18 alt2">19</div>
+<div class="line number20 index19 alt1">20</div>
+<div class="line number21 index20 alt2">21</div>
+<div class="line number22 index21 alt1">22</div>
+<div class="line number23 index22 alt2">23</div>
+<div class="line number24 index23 alt1">24</div>
+<div class="line number25 index24 alt2">25</div>
+<div class="line number26 index25 alt1">26</div>
+<div class="line number27 index26 alt2">27</div>
+<div class="line number28 index27 alt1">28</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py keyword">import</code> <code class="py plain">os</code></div>
+<div class="line number2 index1 alt1"> </div>
+<div class="line number3 index2 alt2"><code class="py comments">"""CMSimfly Initialization setup</code></div>
+<div class="line number4 index3 alt1"><code class="py comments">"""</code></div>
+<div class="line number5 index4 alt2"> </div>
+<div class="line number6 index5 alt1"><code class="py comments"># get current directory, on Windows, back slash at the end of the directory</code></div>
+<div class="line number7 index6 alt2"><code class="py plain">_curdir </code><code class="py keyword">=</code> <code class="py plain">os.path.join(os.getcwd(), os.path.dirname(__file__))</code></div>
+<div class="line number8 index7 alt1"><code class="py comments"># config directory</code></div>
+<div class="line number9 index8 alt2"><code class="py plain">config_dir </code><code class="py keyword">=</code> <code class="py plain">_curdir </code><code class="py keyword">+</code> <code class="py string">"/config/"</code></div>
+<div class="line number10 index9 alt1"><code class="py keyword">class</code> <code class="py plain">Init(</code><code class="py functions">object</code><code class="py plain">):</code></div>
+<div class="line number11 index10 alt2"><code class="py spaces">    </code><code class="py comments"># uwsgi as static class variable, can be accessed by Init.uwsgi</code></div>
+<div class="line number12 index11 alt1"><code class="py spaces">    </code><code class="py plain">uwsgi </code><code class="py keyword">=</code> <code class="py color1">False</code></div>
+<div class="line number13 index12 alt2"><code class="py spaces">    </code><code class="py plain">site_title </code><code class="py keyword">=</code> <code class="py string">"w16"</code></div>
+<div class="line number14 index13 alt1"><code class="py spaces">    </code><code class="py plain">ip </code><code class="py keyword">=</code> <code class="py string">"127.0.0.1"</code></div>
+<div class="line number15 index14 alt2"><code class="py spaces">    </code><code class="py plain">dynamic_port </code><code class="py keyword">=</code> <code class="py value">9445</code></div>
+<div class="line number16 index15 alt1"><code class="py spaces">    </code><code class="py plain">static_port </code><code class="py keyword">=</code> <code class="py value">8445</code></div>
+<div class="line number17 index16 alt2"><code class="py spaces">    </code><code class="py keyword">def</code> <code class="py plain">__init__(</code><code class="py color1">self</code><code class="py plain">):</code></div>
+<div class="line number18 index17 alt1"><code class="py spaces">        </code><code class="py comments"># hope to create downloads and images directories　</code></div>
+<div class="line number19 index18 alt2"><code class="py spaces">        </code><code class="py keyword">if</code> <code class="py keyword">not</code> <code class="py plain">os.path.isdir(_curdir </code><code class="py keyword">+</code> <code class="py string">"/downloads"</code><code class="py plain">):</code></div>
+<div class="line number20 index19 alt1"><code class="py spaces">            </code><code class="py keyword">try</code><code class="py plain">:</code></div>
+<div class="line number21 index20 alt2"><code class="py spaces">                </code><code class="py plain">os.makedirs(_curdir </code><code class="py keyword">+</code> <code class="py string">"/downloads"</code><code class="py plain">)</code></div>
+<div class="line number22 index21 alt1"><code class="py spaces">            </code><code class="py keyword">except</code><code class="py plain">:</code></div>
+<div class="line number23 index22 alt2"><code class="py spaces">                </code><code class="py functions">print</code><code class="py plain">(</code><code class="py string">"mkdir error"</code><code class="py plain">)</code></div>
+<div class="line number24 index23 alt1"><code class="py spaces">        </code><code class="py keyword">if</code> <code class="py keyword">not</code> <code class="py plain">os.path.isdir(_curdir </code><code class="py keyword">+</code> <code class="py string">"/images"</code><code class="py plain">):</code></div>
+<div class="line number25 index24 alt2"><code class="py spaces">            </code><code class="py keyword">try</code><code class="py plain">:</code></div>
+<div class="line number26 index25 alt1"><code class="py spaces">                </code><code class="py plain">os.makedirs(_curdir </code><code class="py keyword">+</code> <code class="py string">"/images"</code><code class="py plain">)</code></div>
+<div class="line number27 index26 alt2"><code class="py spaces">            </code><code class="py keyword">except</code><code class="py plain">:</code></div>
+<div class="line number28 index27 alt1"><code class="py spaces">                </code><code class="py functions">print</code><code class="py plain">(</code><code class="py string">"mkdir error"</code><code class="py plain">)</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
