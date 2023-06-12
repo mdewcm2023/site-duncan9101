@@ -141,140 +141,58 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w5 << <a href='w5.html'>Previous</a> <a href='W11.html'>Next</a> >> W11<br /><h1>W9</h1>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h1&gt;w9平均成績&lt;/h1&gt;
-&lt;p&gt;&lt;span&gt;這是各個學員的平均成績程式:&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;
-&lt;script type="text/javascript" src="https://unpkg.com/three@0.144.0/build/three.js"&gt;&lt;/script&gt;
-&lt;/p&gt;
-&lt;!-- &lt;script&gt;
-  MathJax = {
-    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
-  };
-  &lt;/script&gt;
-  &lt;script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"&gt;&lt;/script&gt;--&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"&gt;# Example data for five tests
-url1 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw5.txt"
-url2 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6.txt"
-url3 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6-2.txt"
-url4 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/075c06b2baf1bb07665f1a98e9f88f7e81ebe1a4/1aw8.txt"
-url5 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw9.txt"
-
-'''
-test1 = ["12345:80", "67890:70"]
-test2 = ["12345:85", "67890:75"]
-test3 = ["12345:90", "67890:80"]
-test4 = ["12345:95", "67890:85"]
-test5 = ["12345:100", "67890:90"]
-'''
-test1 = open(url1).read().split("\n")[1:]
-test2 = open(url2).read().split("\n")[1:]
-test3 = open(url3).read().split("\n")[1:]
-test4 = open(url4).read().split("\n")[1:]
-test5 = open(url5).read().split("\n")[1:]
-
-
-# Create a dictionary to store the student numbers and their test scores
-student_scores = {}
-
-# Iterate over the data for each test
-for test_data in [test1, test2, test3, test4, test5]:
-    # Iterate over the data for this test
-    for item in test_data:
-        # Split the item into its components
-        student_number, score = item.split(":")
-
-        # Convert the score to an integer
-        try:
-            score = int(score)
-        except:
-            score = 0
-
-        # Add the score to the list of scores for this student
-        if student_number not in student_scores:
-            student_scores[student_number] = []
-        student_scores[student_number].append(score)
-
-# Calculate the average score for each student
-for student_number, scores in student_scores.items():
-    average_score = int(sum(scores) / len(scores))
-    print(f"{student_number}的期中平均成績 {average_score}")&lt;/pre&gt;
-&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;
-&lt;!-- 導入 brython 程式庫 --&gt;
-&lt;p&gt;
-&lt;script src="./../cmsimde/static/brython.js"&gt;&lt;/script&gt;
-&lt;script src="./../cmsimde/static/brython_stdlib.js"&gt;&lt;/script&gt;
-&lt;/p&gt;
-&lt;!-- 啟動 Brython --&gt;
-&lt;p&gt;
-&lt;script&gt;// &lt;![CDATA[
-window.onload=function(){
-brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
-}
-// ]]&gt;&lt;/script&gt;
-&lt;/p&gt;
-&lt;div id="brython_div"&gt;&lt;/div&gt;
-&lt;p&gt;
-&lt;script type="text/python"&gt;// &lt;![CDATA[
-from browser import html, document
-brython_div = document["brython_div"]
-# Example data for five tests
-url1 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw5.txt"
-url2 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6.txt"
-url3 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw6-2.txt"
-url4 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/075c06b2baf1bb07665f1a98e9f88f7e81ebe1a4/1aw8.txt"
-url5 = "https://gist.githubusercontent.com/mdecycu/07f0f0817115a68d55d6ca603c5ab393/raw/239f4eb84715978daead6ac1f231af7f190a2a5e/1aw9.txt"
- 
-'''
-test1 = ["12345:80", "67890:70"]
-test2 = ["12345:85", "67890:75"]
-test3 = ["12345:90", "67890:80"]
-test4 = ["12345:95", "67890:85"]
-test5 = ["12345:100", "67890:90"]
-'''
-test1 = open(url1).read().split("\n")[1:]
-test2 = open(url2).read().split("\n")[1:]
-test3 = open(url3).read().split("\n")[1:]
-test4 = open(url4).read().split("\n")[1:]
-test5 = open(url5).read().split("\n")[1:]
- 
- 
-# Create a dictionary to store the student numbers and their test scores
-student_scores = {}
- 
-# Iterate over the data for each test
-for test_data in [test1, test2, test3, test4, test5]:
-    # Iterate over the data for this test
-    for item in test_data:
-        # Split the item into its components
-        student_number, score = item.split(":")
- 
-        # Convert the score to an integer
-        try:
-            score = int(score)
-        except:
-            score = 0
- 
-        # Add the score to the list of scores for this student
-        if student_number not in student_scores:
-            student_scores[student_number] = []
-        student_scores[student_number].append(score)
- 
-# Calculate the average score for each student
-for student_number, scores in student_scores.items():
-    average_score = int(sum(scores) / len(scores))
-    print(f"{student_number}的期中平均成績 {average_score}")
-    brython_div &lt;= student_number
-    brython_div &lt;= ":"
-    brython_div &lt;= average_score
-    brython_div &lt;= html.BR()
-
-brython_div &lt;= data
-// ]]&gt;&lt;/script&gt;
-&lt;/p&gt;</pre>
-<p></p>
-<br />w5 << <a href='w5.html'>Previous</a> <a href='W11.html'>Next</a> >> W11</div>
+    <div id="tipue_search_content">W13 << <a href='W13.html'>Previous</a> <br /><h1>W15</h1>
+<p>希望採全雲端的方式建立 github pages 網站</p>
+<ol>
+<li>近端 (可攜 localhost, add commit 無需上網), 中端 (stud2 主機上, 與 Github 互動, 仍受到上傳檔案容量限制 (free account)) &gt; 雲端啟用動態網站編輯網頁內容 (受限於 Replit 所提供的服務, cpu, ram, disk)</li>
+<li>登入 gmail 帳號 -&gt;<span> </span><a href="https://replit.com/">https://replit.com</a></li>
+<li>在 Replit 中建立 Repl -&gt; 選用 Python template -&gt; 將專案命名為 w15</li>
+<li>在 Shell 頁面輸入 git version</li>
+<li>git init</li>
+<li>git branch -m main</li>
+<li>git submodule add https://github.com/mdecycu/cmsimde.git cmsimde</li>
+<li>利用下列指令, 將 cmsimde 目錄中的 up_dir 內全部資料複製到專案根目錄</li>
+<li>確認目前位於根目錄</li>
+<li>cp -R ./cmsimde/up_dir/* ./</li>
+<li>建立 .gitignore  將 venv, config/config, __pycache__ 等靜態網站無關的檔案讓他留在 Replit</li>
+<li>此時按下 Run -&gt; 根據 .replit 中的設定, 利用 python3 執行 main.py</li>
+<li>顯示出 Replit 內建的 Python3 環境並沒有執行 cmsimde 所需的模組</li>
+<li>pip install flask flask_cors bs4 lxml pelican markdown gevent</li>
+<li>所需模組安裝後, 就可以按下 Run 執行 main.py, 啟動後, 將網址複製到瀏覽器登入更改密碼</li>
+<li>git remote add origin<span> </span><a href="https://github.com/scrum-3/w15.git">https://github.com/scrum-3/w15.git</a></li>
+<li>將能夠維護 repo 權限的 token 放到 .git/config 與 origin 對應的 url</li>
+<li>建立一個忽略 venv, config/config 以及  __Pycache__ 等目錄及無用的檔案</li>
+<li>git push -u origin main<br/><br/></li>
+</ol>
+<p>.gitignore 內容:</p>
+<div>
+<div class="syntaxhighlighter js" id="highlighter_83339">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+<div class="line number5 index4 alt2">5</div>
+<div class="line number6 index5 alt1">6</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="js preprocessor"># Byte-compiled</code></div>
+<div class="line number2 index1 alt1"><code class="js plain">__pycache__/</code></div>
+<div class="line number3 index2 alt2"><code class="js preprocessor"># for Replit, do not use the embedded venv Python</code></div>
+<div class="line number4 index3 alt1"><code class="js plain">venv/</code></div>
+<div class="line number5 index4 alt2"><code class="js plain">config/config</code></div>
+<div class="line number6 index5 alt1"><code class="js plain">.DS_Store</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><br />W13 << <a href='W13.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
